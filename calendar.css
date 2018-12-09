@@ -1,0 +1,115 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/*
+*
+** Header
+*
+*/
+
+.header {
+	width: 100%;
+	height: 80px;
+	border-bottom: #e0e0e0 2px solid;
+	display: flex;
+	justify-content: space-between;
+	background-color: #f0f0f0;
+	box-shadow: rgba(0, 0, 0, 0.2) 0 1px 8px 0;
+}
+
+.headButtons {
+	background-color: blue;
+	color: white;
+}
+
+.blue_buttons {
+	display: flex;
+	align-items: center;
+	margin-top: 15px;
+	margin-left: 70px;
+}
+
+.add {
+	margin-right: 10px;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+	border-radius: 2px;
+	border-bottom: 4px solid rgba(0,0,0,0.21);
+	border: 1px solid rgba(0,0,0,0.21);
+	background: rgba(102,152,203,1);
+	font-size: 17px;
+	height: 30px;
+	width: 100px;
+}
+
+.refresh {
+	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+	border-radius: 2px;
+	border-bottom: 4px solid rgba(0,0,0,0.21);
+	border: 1px solid rgba(0,0,0,0.21);
+	background: rgba(102,152,203,1);
+	font-size: 17px;
+	height: 30px;
+	width: 100px;
+}
+
+.search_field {
+	display: flex;
+	align-items: center;
+	margin-top: 15px;
+    margin-right: 70px;
+}
+
+.input {
+	height: 30px;
+	width: 240px;
+	padding-left: 5px;
+	border-radius: 3px;
+	font-size: 16px;
+}
+
+.input::placeholder {
+	color: #D3D3D3;
+}
+
+/*
+*
+** Main 
+*
+*/
+
+/*
+	Control panel
+*/
+
+.control_panel {
+	margin: 25px 0 0 80px;
+}
+
+.dd_mm {
+	display: flex;
+}
+
+/*
+	Grid
+*/
+
+
+.container4rows {
+	margin: 20px 80px 0;
+	border: #e0e0e0 1px solid;
+}
+
+.row {
+	width: 100%;
+	height: 90px;
+	border-bottom: #e0e0e0 1px solid;
+	display: flex;
+	flex-direction: row;
+}
+
+.cell {
+	width: 20%;
+	border-right: #e0e0e0 1px solid;
+}
