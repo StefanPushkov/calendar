@@ -28,7 +28,7 @@
 	display: flex;
 	align-items: center;
 	margin-top: 15px;
-	margin-left: 70px;
+	margin-left: 80px;
 }
 
 .add {
@@ -58,7 +58,7 @@
 	display: flex;
 	align-items: center;
 	margin-top: 15px;
-    margin-right: 70px;
+    margin-right: 80px;
 }
 
 .input {
@@ -91,14 +91,53 @@
 	display: flex;
 }
 
+span {
+	line-height: 22px;
+	text-align: center;
+}
+
+.monthLabel {
+	padding: 0 10px;
+	line-height: 22px;
+}
+
+.switch_back {
+	width: 18px;
+	background-color: white;
+	border: 1px solid  lightgrey;
+}
+
+.switch_forward {
+	width: 18px;
+	background-color: white;
+	border: 1px solid  lightgrey;
+}
+
+
 /*
 	Grid
 */
 
 
-.container4rows {
+.container4days {
 	margin: 20px 80px 0;
 	border: #e0e0e0 1px solid;
+}
+
+.days {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	height: 20px;
+}
+
+.day {
+	width: 20%;
+	border-right: #e0e0e0 1px solid;
+}
+
+.row.first {
+	height: 70px;
 }
 
 .row {

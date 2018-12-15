@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="calendar.css">
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<header class="header">
@@ -17,13 +17,22 @@
 		<main>
 			<div class="control_panel">
 				<div class="dd_mm">
-					<div role="button" class="switch_back"></div>
-					<div class="month">jan</div>
-					<div role="button" class="switch_forward"></div>
+					<button class="switch_back"> &lsaquo; </button>
+					<div class="monthLabel"> January 2018 </div>
+					<button class="switch_forward"> &rsaquo; </button>
 				</div>
 			</div>
-			<div class="container4rows">
-				<div class="row">
+			<div class="container4days">
+				<div class="days">
+					<div class="day">Понедельник,</div>
+					<div class="day">Вторник,</div>
+					<div class="day">Среда,</div>
+					<div class="day">Четверг,</div>
+					<div class="day">Пятница,</div>
+					<div class="day">Суббота,</div>
+					<div class="day">Воскресение,</div>
+				</div>
+				<div class="row first">
 					<div class="cell"></div>
 					<div class="cell"></div>
 					<div class="cell"></div>
@@ -70,6 +79,6 @@
 				</div>
 			</div>
 		</main>
+		<script type="text/javascript" src="calendarscript.js"></script>
 	</body>
-	<script type="text/javascript" src="calendarscript.js"></script>
 </html>
