@@ -99,6 +99,8 @@ span {
 .monthLabel {
 	padding: 0 10px;
 	line-height: 22px;
+	font-size: 20px;
+	color: black;
 }
 
 .switch_back {
