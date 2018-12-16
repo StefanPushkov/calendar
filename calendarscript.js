@@ -1,3 +1,4 @@
+$(document).ready(create()); 
 
 
 function create() {
@@ -6,14 +7,10 @@ function create() {
 	var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var thatday = array_months[month];
 	var monthLBL = $(".monthLabel");
-
 	monthLBL.html(thatday);
 }
 
-var prev_button = $(".switch_back");
-prev_button.bind('click', function () {
-	create();
-});
+
 
 
 
