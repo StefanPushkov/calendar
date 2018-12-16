@@ -7,11 +7,9 @@ function create() {
 	var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var thatday = array_months[month];
 	var monthLBL = $(".monthLabel");
-	monthLBL.html(thatday);
+	var year = now.getFullYear();
+	monthLBL.html(thatday + " " + year);
 }
-
-
-
 
 
 
