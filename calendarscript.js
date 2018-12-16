@@ -1,20 +1,42 @@
+/* GLOBAL VARS */
+
+
+var now = new Date();
+var month = now.getMonth();
+var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var year = now.getFullYear();
+
+
+ /* FUNCTIONS */
+
 $(document).ready(create()); 
 
+	
 
 function create() {
-	var now = new Date();
-	var month = now.getMonth();
-	var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var thatday = array_months[month];
+	var thatmonth = array_months[month];
 	var monthLBL = $(".monthLabel");
-	var year = now.getFullYear();
-	monthLBL.html(thatday + " " + year);
+	monthLBL.html(thatmonth + " " + year);
 }
 
 
 
+function addMonth (num) {
+	var monthLBL = $(".monthLabel");
+	var newmonth = array_months[month += num];
+	monthLBL.html(newmonth + " " + year);
 
+}
 
+var forw_button = $(".switch_forward");
+forw_button.bind('click', function () {
+	addMonth(1);
+});
+
+var prev_button = $(".switch_back");
+prev_button.bind('click', function () {
+	addMonth(-1);
+});
 
 
 

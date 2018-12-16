@@ -101,6 +101,8 @@ span {
 	line-height: 22px;
 	font-size: 20px;
 	color: black;
+	text-align: center;
+	width: 135px;
 }
 
 .switch_back {
