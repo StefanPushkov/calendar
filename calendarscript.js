@@ -5,6 +5,8 @@ var now = new Date();
 var month = now.getMonth();
 var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var year = now.getFullYear();
+var monthLBL = $(".monthLabel");
+
 
 
  /* FUNCTIONS */
@@ -22,11 +24,22 @@ function create() {
 
 
 function addMonth (num) {
-	var monthLBL = $(".monthLabel");
 	var newmonth = array_months[month += num];
-	monthLBL.html(newmonth + " " + year);
+	var monthLBLvalue = monthLBL.text();
+	var isDecember = monthLBLvalue.includes("December");
 
+	if(num == 1) {
+		if(isDecember == true) {
+			month = 0;
+			monthLBL.html(array_months[0] + " " + year);
+		} else {
+			monthLBL.html(newmonth + " " + year);
+		}
+	} else {
+		monthLBL.html(newmonth + " " + year);
+	} 
 }
+
 
 var forw_button = $(".switch_forward");
 forw_button.bind('click', function () {
