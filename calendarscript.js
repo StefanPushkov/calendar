@@ -27,18 +27,23 @@ function addMonth (num) {
 	var newmonth = array_months[month += num];
 	var monthLBLvalue = monthLBL.text();
 	var isDecember = monthLBLvalue.includes("December");
+	var isJanuary = monthLBLvalue.includes("January");
 
 	if(num == 1) {
-		if(isDecember == true) {
+		if (isDecember == true) {
 			month = 0;
 			monthLBL.html(array_months[0] + " " + year);
 		} else {
 			monthLBL.html(newmonth + " " + year);
 		}
-	} else {
-		monthLBL.html(newmonth + " " + year);
-	} 
-}
+	} else if(num == -1) 
+		if (isJanuary == true) {
+			month = 11;
+			monthLBL.html(array_months[11] + " " + year);		
+		} else {
+			monthLBL.html(newmonth + " " + year);
+		} 
+	}
 
 
 var forw_button = $(".switch_forward");
