@@ -3,9 +3,10 @@
 
 var now = new Date();
 var month = now.getMonth();
-var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var year = now.getFullYear();
+var array_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var monthLBL = $(".monthLabel");
+
 
 
 
@@ -28,20 +29,25 @@ function addMonth (num) {
 	var monthLBLvalue = monthLBL.text();
 	var isDecember = monthLBLvalue.includes("December");
 	var isJanuary = monthLBLvalue.includes("January");
+	var curr = monthLBL.text().trim().split(" ");
+	var tempYear = parseInt(curr[1], 10);
+	var yearPlus = tempYear + 1;
+	var yearMinus = tempYear - 1; 
+
 
 	if(num == 1) {
 		if (isDecember == true) {
 			month = 0;
-			monthLBL.html(array_months[0] + " " + year);
+			monthLBL.html(array_months[0] + " " + yearPlus);
 		} else {
-			monthLBL.html(newmonth + " " + year);
+			monthLBL.html(newmonth + " " + tempYear);
 		}
 	} else if(num == -1) 
 		if (isJanuary == true) {
 			month = 11;
-			monthLBL.html(array_months[11] + " " + year);		
+			monthLBL.html(array_months[11] + " " + yearMinus);		
 		} else {
-			monthLBL.html(newmonth + " " + year);
+			monthLBL.html(newmonth + " " + tempYear);
 		} 
 	}
 
