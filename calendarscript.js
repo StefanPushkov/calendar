@@ -112,14 +112,33 @@ $(".calendarGrid").append(calendarTable);*/
 var calendarTable = $("<table class='table'>");
 
 var amountOfDays = new Date(year, month+1, 0).getDate();
+
+now.setDate(1);
+var blank = (now.getDay() == 0)?6:now.getDay() - 1;
 var text = "<tr class='row'>";
+var all_td = 0;
+
+for (var i = 0; i < blank; i++) {
+	text+="<td class='cell'>" + "&nbsp;" + "</td>";
+	all_td = blank;
+}
+
 
 for (var x = 1; x <= amountOfDays; x++) {
 	text+="<td class='cell'>" + x + "</td>";
-	if(x%7==0) {
+	all_td++;
+	if(all_td%7==0) {
 		text += "</tr><tr class='row'>";
 	}
 }
+
+var lastDay = new Date(year, month+1, 0).getDay();
+var blankback = (6 - lastDay);
+
+for (var y = 0; y <= blankback; y++) {
+	text += "<td class='cell'>" + "&nbsp;" + "</td>";
+}
+
 
 $(calendarTable).append(text);
 $(".calendarGrid").append(calendarTable);
