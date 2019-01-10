@@ -31,6 +31,7 @@ function addMonth (num) {
 	var isJanuary = monthLBLvalue.includes("January");
 	var curr = monthLBL.text().trim().split(" ");
 	var tempYear = parseInt(curr[1], 10);
+	var tempYear4grid = curr[1];
 	var yearPlus = tempYear + 1;
 	var yearMinus = tempYear - 1; 
 
@@ -63,12 +64,65 @@ prev_button.bind('click', function () {
 });
 
 
+/*  СОЗДАНИЕ ЯЧЕЕК ДЛЯ ДНЕЙ МЕСЯЦА  */
+
+/*
+var calendarTable = document.createElement("table"); 
+var	newRow = calendarTable.insertRow(-1),
+	newCell,
+	weekDay = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'],
+	firstWeekDay = new Date(year, month, 1).getDay(),
+	lastDayMonth = new Date(year, month+1, 0).getDate();
 
 
 
+for (var i = 0, I = weekDay.length; i < I; i++) {
+	newCell = newRow.insertCell(-1);
+	newCell.className = "cell";
+	newCell.appendChild(document.createTextNode(weekDay[i]));
+}
+
+function getRuWeekDay(computed_day) {
+    return (computed_day + 6) % 7;
+}
+
+lastDayMonth += getRuWeekDay(firstWeekDay);
 
 
 
+for (var j = 1; j <= lastDayMonth; j++){
+    newCell = newRow.insertCell(-1);
+    newCell.className =  "cell";
+    if(j-firstWeekDay > 0){
+        newCell.appendChild(document.createTextNode(j-firstWeekDay));
+    }else{
+        newCell.appendChild(document.createTextNode(''));
+    }
+ 
+    if(j%7==1){
+        newRow = calendarTable.insertRow(-1);
+    }
+}
+
+
+$(".calendarGrid").append(calendarTable);*/
+
+/*calendarTable.className = "container4days";*/
+
+var calendarTable = $("<table class='table'>");
+
+var amountOfDays = new Date(year, month+1, 0).getDate();
+var text = "<tr class='row'>";
+
+for (var x = 1; x <= amountOfDays; x++) {
+	text+="<td class='cell'>" + x + "</td>";
+	if(x%7==0) {
+		text += "</tr><tr class='row'>";
+	}
+}
+
+$(calendarTable).append(text);
+$(".calendarGrid").append(calendarTable);
 
 
 
