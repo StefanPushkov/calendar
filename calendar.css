@@ -154,11 +154,13 @@ span {
 	border: #e0e0e0 1px solid;
 	display: flex;
 	flex-direction: row;
+	color: #747272;
 }
 
 .cell {
 	width: 20%;
 	border-right: #e0e0e0 1px solid;
+	padding: 5px 5px;
 
 }
 

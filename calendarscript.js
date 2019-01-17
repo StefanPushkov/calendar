@@ -66,48 +66,7 @@ prev_button.bind('click', function () {
 
 /*  СОЗДАНИЕ ЯЧЕЕК ДЛЯ ДНЕЙ МЕСЯЦА  */
 
-/*
-var calendarTable = document.createElement("table"); 
-var	newRow = calendarTable.insertRow(-1),
-	newCell,
-	weekDay = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'],
-	firstWeekDay = new Date(year, month, 1).getDay(),
-	lastDayMonth = new Date(year, month+1, 0).getDate();
 
-
-
-for (var i = 0, I = weekDay.length; i < I; i++) {
-	newCell = newRow.insertCell(-1);
-	newCell.className = "cell";
-	newCell.appendChild(document.createTextNode(weekDay[i]));
-}
-
-function getRuWeekDay(computed_day) {
-    return (computed_day + 6) % 7;
-}
-
-lastDayMonth += getRuWeekDay(firstWeekDay);
-
-
-
-for (var j = 1; j <= lastDayMonth; j++){
-    newCell = newRow.insertCell(-1);
-    newCell.className =  "cell";
-    if(j-firstWeekDay > 0){
-        newCell.appendChild(document.createTextNode(j-firstWeekDay));
-    }else{
-        newCell.appendChild(document.createTextNode(''));
-    }
- 
-    if(j%7==1){
-        newRow = calendarTable.insertRow(-1);
-    }
-}
-
-
-$(".calendarGrid").append(calendarTable);*/
-
-/*calendarTable.className = "container4days";*/
 
 var calendarTable = $("<table class='table'>");
 
@@ -143,87 +102,44 @@ for (var y = 0; y <= blankback; y++) {
 $(calendarTable).append(text);
 $(".calendarGrid").append(calendarTable);
 
+/*
+var tableTD = $('.table');
+var arr = [];
+var allTrs = $('.cell');
 
+for (var trcounter = 0; trcounter < allTrs.length; trcounter++) {
 
+	var tempArr = [];
+	var allTdInTr = allTrs[trcounter].getElementsByTagName('td');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/* НЕ ДО КОНЦА РАБОЧИЙ ПРИМЕР  */
-
-/*var calendar = function () {
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-
-function init() {
-	var month_label = $(".monthLabel");
-	var prev_button = $(".switch_back");
-	var forw_button = $(".switch_forward");
-	prev_button.bind('click', function () { toggleMonth(false) });
-	forw_button.bind('click', function () { toggleMonth(true) });
-	month_label.bind("click", function () { toggleMonth(null, new Date().getMonth(), new Date().getFullYear()); });        
-    month_label.click();
+	for (var tdcounter = 0; tdcounter < allTdInTr.length; tdcounter++) {
+		tempArr.push(allTdInTr[tdcounter].innerHTML);
 	}
-
-
-
-function toggleMonth(next, month, year) {
-		var current = $(".month");
-		var currentMonth = current.text().trim().split(" ");
-		var tempYear =  parseInt(currentMonth[1], 10);
-
-		month = month || function () {
-			if(!month) {
-				if(true) {
-					if (currentMonth[0] === "December") {
-						month = 0;
-					} else {
-						month = months.indexOf(currentMonth[0]) + 1;
-					}
-				} else { 
-					if(currentMonth[0] === "January") {
-						month = 11;
-				} else {
-					month = months.indexOf(currentMonth[0]) - 1;
-					}
-				}
-			}
-		}
-
-		year = year || function () { 
-			if(!year) {
-				if(next && month === 0) {
-					year = tempYear + 1; 
-			} else if (!next && month === 11) {
-					year = tempYear - 1;
-				} else {
-					year = tempYear;
-				}
-			}
-		}
-	}
+	arr.push(tempArr);
 }
 
-var CAL = calendar();
-CAL.init();
+$(".calendarGrid").append(arr);
+
 
 */
+/*
+var arr = [];
+var c = $(".cell");
+$(c).each( function() {
+	arr.push($(this));
+} ) */
+
+
+
+
+
+var c = document.querySelectorAll(".cell");
+Array.from(c);
+var arrayOfDays = [", Понедельник", ", Вторник", ", Среда", ", Чтеверг", ", Пятница", ", Суббота", ", Воскресение"];
+
+
+for (var d = 0; d < 7; d++) {
+	var weekDay = arrayOfDays[d];
+	c[d].innerHTML +=  weekDay;
+
+	}
