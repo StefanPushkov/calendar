@@ -13,13 +13,14 @@ var monthLBL = $(".monthLabel");
  /* FUNCTIONS */
 
 $(document).ready(create()); 
-
+createGrid();
 	
 
 function create() {
 	var thatmonth = array_months[month];
 	var monthLBL = $(".monthLabel");
 	monthLBL.html(thatmonth + " " + year);
+
 }
 
 
@@ -56,21 +57,31 @@ function addMonth (num) {
 var forw_button = $(".switch_forward");
 forw_button.bind('click', function () {
 	addMonth(1);
+	removing();
+	createGrid();
 });
 
 var prev_button = $(".switch_back");
 prev_button.bind('click', function () {
 	addMonth(-1);
+	removing();
+	createGrid();
 });
 
 
 /*  СОЗДАНИЕ ЯЧЕЕК ДЛЯ ДНЕЙ МЕСЯЦА  */
+function createGrid() {
 
-
+var monthLBL = $(".monthLabel");
 
 var calendarTable = $("<table class='table'>");
+var curr = monthLBL.text().trim().split(" ");
+var monthName = curr[0];
+var indexyear = curr[1];
+var indexmonth = array_months.indexOf(monthName);
 
-var amountOfDays = new Date(year, month+1, 0).getDate();
+var now = new Date(indexyear, indexmonth);
+var amountOfDays = new Date(indexyear, indexmonth+1, 0).getDate();
 
 now.setDate(1);
 var blank = (now.getDay() == 0)?6:now.getDay() - 1;
@@ -91,7 +102,7 @@ for (var x = 1; x <= amountOfDays; x++) {
 	}
 }
 
-var lastDay = new Date(year, month+1, 0).getDay();
+var lastDay = new Date(indexyear, indexmonth+1, 0).getDay();
 var blankback = (6 - lastDay);
 
 for (var y = 0; y <= blankback; y++) {
@@ -102,44 +113,22 @@ for (var y = 0; y <= blankback; y++) {
 $(calendarTable).append(text);
 $(".calendarGrid").append(calendarTable);
 
-/*
-var tableTD = $('.table');
-var arr = [];
-var allTrs = $('.cell');
-
-for (var trcounter = 0; trcounter < allTrs.length; trcounter++) {
-
-	var tempArr = [];
-	var allTdInTr = allTrs[trcounter].getElementsByTagName('td');
-
-	for (var tdcounter = 0; tdcounter < allTdInTr.length; tdcounter++) {
-		tempArr.push(allTdInTr[tdcounter].innerHTML);
-	}
-	arr.push(tempArr);
-}
-
-$(".calendarGrid").append(arr);
-
-
-*/
-/*
-var arr = [];
-var c = $(".cell");
-$(c).each( function() {
-	arr.push($(this));
-} ) */
-
-
-
-
-
 var c = document.querySelectorAll(".cell");
 Array.from(c);
-var arrayOfDays = [", Понедельник", ", Вторник", ", Среда", ", Чтеверг", ", Пятница", ", Суббота", ", Воскресение"];
+var arrayOfDays = [", Понедельник", ", Вторник", ", Среда", ", Четверг", ", Пятница", ", Суббота", ", Воскресение"];
 
 
 for (var d = 0; d < 7; d++) {
 	var weekDay = arrayOfDays[d];
 	c[d].innerHTML +=  weekDay;
-
 	}
+}
+
+/*  
+		Добавление дней недели в первый ряд календаря
+*/
+
+function removing() {
+	var calendarTable = $(".table");
+	$(calendarTable).remove();
+}
