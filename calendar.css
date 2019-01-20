@@ -154,7 +154,7 @@ span {
 	border: #e0e0e0 1px solid;
 	display: flex;
 	flex-direction: row;
-	color: #747272;
+	color: #393939;
 }
 
 .cell {
@@ -162,6 +162,10 @@ span {
 	border-right: #e0e0e0 1px solid;
 	padding: 5px 5px;
 
+}
+
+.last, .first{
+	color: #393939a1;
 }
 
 /*.calendarGrid {
