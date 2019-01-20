@@ -72,100 +72,104 @@ prev_button.bind('click', function () {
 /*  СОЗДАНИЕ ЯЧЕЕК ДЛЯ ДНЕЙ МЕСЯЦА  */
 function createGrid() {
 
-var monthLBL = $(".monthLabel");
+	var monthLBL = $(".monthLabel");
 
-var calendarTable = $("<table class='table'>");
-var curr = monthLBL.text().trim().split(" ");
-var monthName = curr[0];
-var nameYear = curr[1];
-var indexmonth = array_months.indexOf(monthName);
-var now = new Date(nameYear, indexmonth);
-var amountOfDays = new Date(nameYear, indexmonth+1, 0).getDate();
+	var calendarTable = $("<table class='table'>");
+	var curr = monthLBL.text().trim().split(" ");
+	var monthName = curr[0];
+	var nameYear = curr[1];
+	var indexmonth = array_months.indexOf(monthName);
+	var now = new Date(nameYear, indexmonth);
+	var amountOfDays = new Date(nameYear, indexmonth+1, 0).getDate();
 
 
-/*
-	Функция вставляет в клеточки календаря в первом ряду
-	последние дни предыдущего месяца
-*/
-function preMonth() {
-	/*	Данная переменная содержит количество дней предыдущего месяца*/
-	var preMonthDays = new Date(nameYear, indexmonth, 0).getDate();
+	/*
+		Функция вставляет в клеточки календаря в первом ряду
+		последние дни предыдущего месяца
+	*/
+	function preMonth() {
+		/*	Данная переменная содержит количество дней предыдущего месяца*/
+		var preMonthDays = new Date(nameYear, indexmonth, 0).getDate();
+		now.setDate(1);
+		var blank = (now.getDay() == 0)?6:now.getDay() - 1;
+		/*  День предыдущего месяца с которого начинаем неделю	*/
+		var dayStarts = preMonthDays - blank + 1;
+
+		for (var w = dayStarts; w <= preMonthDays; w++) {
+			text+="<td class='cell last'>" + w + "</td>";
+			all_td++;
+		}
+	}
+
+	/*
+		Функция вставляет в клеточки календаря в последнем ряду
+		первые дни следующего месяца
+	*/
+	function nxtMonth() {
+		var nxtMonthDays = new Date(nameYear, indexmonth+2, 0).getDate();
+		var lastDay = new Date(nameYear, indexmonth+1, 0).getDay() ;
+		var blankback = (lastDay == 0) ? 0 : (7 - lastDay);
+		var cutDays = nxtMonthDays - blankback;
+		var suitNxtMonthDays = nxtMonthDays - cutDays;
+
+		for (var z = 1; z <= suitNxtMonthDays; z++) {
+			text += "<td class='cell first'>" + z + "</td>";
+		}
+	}
+
+	/*
 	now.setDate(1);
 	var blank = (now.getDay() == 0)?6:now.getDay() - 1;
-	/*  День предыдущего месяца с которого начинаем неделю	*/
-	var dayStarts = preMonthDays - blank + 1;
+	for (var i = 0; i < blank; i++) {
+		text+="<td class='cell'>" + "&nbsp;" + "</td>";
+		all_td = blank;
+	}*/
 
-	for (var w = dayStarts; w <= preMonthDays; w++) {
-		text+="<td class='cell last'>" + w + "</td>";
+	var text = "<tr class='row'>";
+	var all_td = 0;
+
+	//1  
+	preMonth();
+
+
+	//2
+	for (var x = 1; x <= amountOfDays; x++) {
+		text+="<td class='cell'>" + x + "</td>";
 		all_td++;
-	}
-}
-
-/*
-	Функция вставляет в клеточки календаря в последнем ряду
-	первые дни следующего месяца
-*/
-function nxtMonth() {
-	var nxtMonthDays = new Date(nameYear, indexmonth+2, 0).getDate();
-	var lastDay = new Date(nameYear, indexmonth+1, 0).getDay() ;
-	var blankback = (lastDay == 0) ? 0 : (7 - lastDay);
-	var cutDays = nxtMonthDays - blankback;
-	var suitNxtMonthDays = nxtMonthDays - cutDays;
-
-	for (var z = 1; z <= suitNxtMonthDays; z++) {
-		text += "<td class='cell first'>" + z + "</td>";
-	}
-}
-
-/*
-now.setDate(1);
-var blank = (now.getDay() == 0)?6:now.getDay() - 1;
-for (var i = 0; i < blank; i++) {
-	text+="<td class='cell'>" + "&nbsp;" + "</td>";
-	all_td = blank;
-}*/
-
-var text = "<tr class='row'>";
-var all_td = 0;
-
-//1  
-preMonth();
-
-
-//2
-for (var x = 1; x <= amountOfDays; x++) {
-	text+="<td class='cell'>" + x + "</td>";
-	all_td++;
-	if(all_td%7==0) {
-		if(all_td!= 35){
+		if(all_td%7==0) {
+			var thisDay = now.getDay();
+			if(thisDay == amountOfDays) {
+				text += "</tr>";
+			}
 			text += "</tr><tr class='row'>";
 		}
 	}
-}
 
-//3
-nxtMonth();
+	//3
+	nxtMonth();
 
-/*
-var lastDay = new Date(nameYear, indexmonth+1, 0).getDay() ;
-var blankback = (lastDay == 0) ? 0 : (7 - lastDay);
-for (var y = 1; y <= blankback; y++) {
-	text += "<td class='cell'>" + "&nbsp;" + "</td>";
-}
-*/
+	text += "</tr></table>";
 
-$(calendarTable).append(text);
-$(".calendarGrid").append(calendarTable);
-
-var c = document.querySelectorAll(".cell");
-Array.from(c);
-var arrayOfDays = [", Пн", ", Вт", ", Ср", ", Чт", ", Пт", ", Сб", ", Вс"];
-
-
-for (var d = 0; d < 7; d++) {
-	var weekDay = arrayOfDays[d];
-	c[d].innerHTML +=  weekDay;
+	/*
+	var lastDay = new Date(nameYear, indexmonth+1, 0).getDay() ;
+	var blankback = (lastDay == 0) ? 0 : (7 - lastDay);
+	for (var y = 1; y <= blankback; y++) {
+		text += "<td class='cell'>" + "&nbsp;" + "</td>";
 	}
+	*/
+
+	$(calendarTable).append(text);
+	$(".calendarGrid").append(calendarTable);
+
+	var c = document.querySelectorAll(".cell");
+	Array.from(c);
+	var arrayOfDays = [", Пн", ", Вт", ", Ср", ", Чт", ", Пт", ", Сб", ", Вс"];
+
+
+	for (var d = 0; d < 7; d++) {
+		var weekDay = arrayOfDays[d];
+		c[d].innerHTML +=  weekDay;
+		}
 }
 
 /*  
@@ -176,3 +180,5 @@ function removing() {
 	var calendarTable = $(".table");
 	$(calendarTable).remove();
 }
+
+
