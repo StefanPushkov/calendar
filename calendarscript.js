@@ -81,6 +81,7 @@ function createGrid() {
 	var indexmonth = array_months.indexOf(monthName);
 	var now = new Date(nameYear, indexmonth);
 	var amountOfDays = new Date(nameYear, indexmonth+1, 0).getDate();
+	var all_td = 0;
 
 
 	/*
@@ -101,6 +102,23 @@ function createGrid() {
 		}
 	}
 
+	function nowMonth() {
+		for (var x = 1; x <= amountOfDays; x++) {
+			text+="<td class='cell'>" + x + "</td>";
+			all_td++;
+			var blank = (now.getDay() == 0)?6:now.getDay() - 1;
+			var allTD = amountOfDays + blank;
+			if(all_td%7==0) {
+				if(allTD != all_td){
+					text += "</tr><tr class='row'>";
+				} else {
+					text += "</tr>";
+				}
+			}
+		}
+	}
+
+
 	/*
 		Функция вставляет в клеточки календаря в последнем ряду
 		первые дни следующего месяца
@@ -114,6 +132,7 @@ function createGrid() {
 
 		for (var z = 1; z <= suitNxtMonthDays; z++) {
 			text += "<td class='cell first'>" + z + "</td>";
+			all_td++;
 		}
 	}
 
@@ -126,24 +145,15 @@ function createGrid() {
 	}*/
 
 	var text = "<tr class='row'>";
-	var all_td = 0;
+	
 
 	//1  
 	preMonth();
 
 
 	//2
-	for (var x = 1; x <= amountOfDays; x++) {
-		text+="<td class='cell'>" + x + "</td>";
-		all_td++;
-		if(all_td%7==0) {
-			var thisDay = now.getDay();
-			if(thisDay == amountOfDays) {
-				text += "</tr>";
-			}
-			text += "</tr><tr class='row'>";
-		}
-	}
+	nowMonth();
+
 
 	//3
 	nxtMonth();
@@ -180,5 +190,34 @@ function removing() {
 	var calendarTable = $(".table");
 	$(calendarTable).remove();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var buttonAdd = $(".add");
+
+
+
+/*создаёт окошко*/
+
+
+$(buttonAdd).on("click", function addEvent() {
+	var eventWindow = $("<div class='eventWindow'>");
+	$(".control_panel").append(eventWindow);
+});
 
 

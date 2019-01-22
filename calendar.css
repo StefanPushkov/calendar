@@ -85,6 +85,7 @@
 
 .control_panel {
 	margin: 25px 0 0 80px;
+	z-index: 10;
 }
 
 .dd_mm {
@@ -126,6 +127,7 @@ span {
 .container4days {
 	margin: 20px 80px 0;
 	border: #e0e0e0 1px solid;
+	z-index: 10;
 }
 
 .days {
@@ -157,6 +159,11 @@ span {
 	color: #393939;
 }
 
+.lastR {
+	border: red 1px solid;
+
+}
+
 .cell {
 	width: 20%;
 	border-right: #e0e0e0 1px solid;
@@ -178,4 +185,18 @@ span {
 .table {
 	width: 100%;
 	padding: 20px 75px 0;
+}
+
+
+
+
+
+
+/*  AAAAADITIONAL lOGIC   */
+
+.eventWindow {
+	width: 100px;
+	height: 100px;
+	z-index: 100;
+	background-color: black;
 }
