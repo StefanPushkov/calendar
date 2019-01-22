@@ -85,7 +85,6 @@
 
 .control_panel {
 	margin: 25px 0 0 80px;
-	z-index: 10;
 }
 
 .dd_mm {
@@ -127,7 +126,6 @@ span {
 .container4days {
 	margin: 20px 80px 0;
 	border: #e0e0e0 1px solid;
-	z-index: 10;
 }
 
 .days {
@@ -194,9 +192,28 @@ span {
 
 /*  AAAAADITIONAL lOGIC   */
 
+/* window when "добавить" button clicks */
 .eventWindow {
-	width: 100px;
+	width: 300px;
 	height: 100px;
-	z-index: 100;
-	background-color: black;
+	position: absolute;
+	top: 90px;
+	left: 60px;
+	background-color: white;
+	border-bottom: #e0e0e0 2px solid;
+	box-shadow: rgba(0, 0, 0, 0.2) 3px 1px 8px 0px;
+}
+
+.input4Event {
+	width: 250px;
+	border: #e0e0e0 1px solid;
+	height: 27px;
+	position: relative;
+	top: 17px;
+	left: 17px;
+	padding-left: 7px;
+}
+
+.input4Event::placeholder {
+	color: rgba(0, 0, 0, 0.5);
 }

@@ -102,6 +102,8 @@ function createGrid() {
 		}
 	}
 
+	/* Создаёт клеточки с числами для текущего месяца */
+
 	function nowMonth() {
 		for (var x = 1; x <= amountOfDays; x++) {
 			text+="<td class='cell'>" + x + "</td>";
@@ -212,12 +214,13 @@ var buttonAdd = $(".add");
 
 
 
-/*создаёт окошко*/
+/* создаёт окошко при клике на кнопку ДОБАВИТЬ */
+var eventWindow = $("<div class='eventWindow'>");
+var inputEvent = $("<input type='text' class='input4Event' placeholder='5 марта'>")
 
 
 $(buttonAdd).on("click", function addEvent() {
-	var eventWindow = $("<div class='eventWindow'>");
-	$(".control_panel").append(eventWindow);
+	$(".header").append(eventWindow);
+	$(eventWindow).append(inputEvent);
 });
-
 
