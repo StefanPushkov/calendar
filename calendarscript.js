@@ -12,8 +12,11 @@ var monthLBL = $(".monthLabel");
 
  /* FUNCTIONS */
 
-$(document).ready(create()); 
-createGrid();
+$(document).ready( function() {
+	create();
+	createGrid();
+	additionalLogic();
+});
 	
 
 function create() {
@@ -211,16 +214,35 @@ function removing() {
 
 
 var buttonAdd = $(".add");
+var eventWindow = $("<div class='eventWindow'>");
+var inputEvent = $("<input type='text' class='input4Event' placeholder='5 марта, 14 часов, День рождения'>");
+var buttonEvent = $("<button class='button4Event'>Создать</button>");
+var windowAdd = $(".eventWindow");
+var addButton = $(".button4Event");
 
 
 
 /* создаёт окошко при клике на кнопку ДОБАВИТЬ */
-var eventWindow = $("<div class='eventWindow'>");
-var inputEvent = $("<input type='text' class='input4Event' placeholder='5 марта'>")
-
-
-$(buttonAdd).on("click", function addEvent() {
+function additionalLogic() {
 	$(".header").append(eventWindow);
 	$(eventWindow).append(inputEvent);
+	$(eventWindow).append(buttonEvent);
+}
+
+
+
+$(buttonAdd).on("click", function () {
+	$(".eventWindow").toggleClass("eventWindowToggle");
 });
 
+
+/* Закрывает открытые окна */
+
+
+$(document).on("click",	function cleanAll(evt) {
+	if($(evt.target).closest(".add").length > 0) {
+		return false;
+	} else {
+		$(".eventWindow").removeClass("eventWindowToggle");
+	} 
+});

@@ -3,6 +3,9 @@
 	margin: 0;
 }
 
+body {
+}
+
 /*
 *
 ** Header
@@ -201,19 +204,39 @@ span {
 	left: 60px;
 	background-color: white;
 	border-bottom: #e0e0e0 2px solid;
-	box-shadow: rgba(0, 0, 0, 0.2) 3px 1px 8px 0px;
+	box-shadow: rgba(0, 0, 0, 0.2) 1px 0px 10px 1px;
+	display: none;
+}
+
+.eventWindowToggle {
+	display: block;
 }
 
 .input4Event {
 	width: 250px;
-	border: #e0e0e0 1px solid;
 	height: 27px;
 	position: relative;
 	top: 17px;
 	left: 17px;
 	padding-left: 7px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-color: #ececec;
+
 }
 
 .input4Event::placeholder {
-	color: rgba(0, 0, 0, 0.5);
+	color: #D3D3D3;
+}
+
+.button4Event {
+	width: 70px;
+	position: relative;
+	top: 27px;
+	left: 17px;
+	height: 24px;
+	border-radius: 5px;
+	background-color: #f0f0f0;
+	border-width: 1px;
+	border-color: #ececec;
 }
