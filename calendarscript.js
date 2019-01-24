@@ -240,7 +240,7 @@ $(buttonAdd).on("click", function () {
 
 
 $(document).on("click",	function cleanAll(evt) {
-	if($(evt.target).closest(".add").length > 0) {
+	if($(evt.target).closest(".add").length > 0 || $(evt.target).closest(".input4Event").length > 0) {
 		return false;
 	} else {
 		$(".eventWindow").removeClass("eventWindowToggle");
